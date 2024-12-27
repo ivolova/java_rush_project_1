@@ -12,7 +12,7 @@ public class Alphabet {
     public static void fillAlphabetShiftMap(int shift) {
 
         int offset = shift % alphabet.size();
-        ArrayList<Character> offsetAlphabet = new ArrayList(alphabet);
+        ArrayList<Character> offsetAlphabet = new ArrayList<>(alphabet);
         Collections.rotate(offsetAlphabet, -offset);
         if (shiftMap == null) {
             shiftMap = new HashMap<>();
@@ -23,11 +23,9 @@ public class Alphabet {
 
         }
 
-        System.out.println(shiftMap.toString());
-
     }
 
-    public static HashMap<Character, Character> getShiftMap() {
+    public static Map<Character, Character> getShiftMap() {
 
         return shiftMap;
     }
@@ -39,7 +37,7 @@ public class Alphabet {
         add('A', 'Z', newAlphabet);
         add('А', 'Я', newAlphabet);
         add('а', 'я', newAlphabet);
-        add(new String(",.;!"), newAlphabet);
+        add(",.;!", newAlphabet);
 
         return newAlphabet;
     }

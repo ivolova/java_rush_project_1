@@ -15,7 +15,7 @@ public class Menu {
             case BRUTFORCE -> {
                 int shift = ActionUtils.runBrutForce();
                 sendMessage(true);
-                sendMessage("Смещение = "+ shift);
+                sendMessage("Смещение = " + shift);
             }
             default -> {
                 sendMessage("Нет указанного действия, ничего делать не будем.");
@@ -31,9 +31,9 @@ public class Menu {
                 1. encrypted
                 2. decrypted
                 3. brutforce
-                 """);
+                """);
         Scanner scanner = new Scanner(System.in);
-        return Action.values()[scanner.nextInt()-1];
+        return Action.values()[scanner.nextInt() - 1];
     }
 
 
@@ -49,11 +49,11 @@ public class Menu {
 
     private static void sendMessage(String message) {
 
-          System.out.println(message);
+        System.out.println(message);
     }
 
     private static void sendMessage(boolean ok) {
 
-        System.out.println((ok) ? "Выполнено": "Не выполнено");
-     }
+        System.out.println((ok) ? "Выполнено" : "Не выполнено");
+    }
 }

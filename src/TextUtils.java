@@ -9,11 +9,11 @@ public class TextUtils {
 
     public static final int MIN_COUNT_EXISTS_WORDS = 2;
 
-    public static void doProcess(Action forAction){
+    public static void doProcess(Action forAction) {
 
-        try{
-            Path pathFrom = Paths.From(forAction) ;
-            Path pathTo = Paths.To(forAction) ;
+        try {
+            Path pathFrom = Paths.From(forAction);
+            Path pathTo = Paths.To(forAction);
 
             List<String> listIn = Files.readAllLines(pathFrom);
 
@@ -25,22 +25,22 @@ public class TextUtils {
             throw new RuntimeException(e);
         }
 
-   }
+    }
 
     public static boolean isDecrypted() {
         try {
-            Path pathFrom = Paths.From(Action.FIND_WORDS) ;
-            Path pathTo = Paths.To(Action.FIND_WORDS) ;
+            Path pathFrom = Paths.From(Action.FIND_WORDS);
+            Path pathTo = Paths.To(Action.FIND_WORDS);
 
             Set<String> setTrimDecryptedWords = getTrimWordsSet(Files.readAllLines(pathFrom));
-            Set<String> setExistsWords  = getTrimWordsSet(Files.readAllLines(pathTo));
+            Set<String> setExistsWords = getTrimWordsSet(Files.readAllLines(pathTo));
 
             int countMatchWords = 0;
             for (String word : setExistsWords) {
                 if (setTrimDecryptedWords.contains(word)) {
                     countMatchWords++;
                 }
-                if (countMatchWords >= MIN_COUNT_EXISTS_WORDS){
+                if (countMatchWords >= MIN_COUNT_EXISTS_WORDS) {
                     return true;
                 }
             }
@@ -50,15 +50,15 @@ public class TextUtils {
         }
     }
 
-   private static List<String> decodeAllLines(List<String> listFrom){
-       List<String> listOut = new ArrayList<>();
+    private static List<String> decodeAllLines(List<String> listFrom) {
+        List<String> listOut = new ArrayList<>();
         for (int i = 0; i < listFrom.size(); i++) {
             listOut.add(i, decodeLine(listFrom.get(i)));
-       }
-       return listOut;
-   }
+        }
+        return listOut;
+    }
 
-    private static String decodeLine(String line ){
+    private static String decodeLine(String line) {
 
         char[] ch = line.toCharArray();
         Map<Character, Character> alphabetMap = Alphabet.getShiftMap();
@@ -74,9 +74,9 @@ public class TextUtils {
     }
 
 
-    private static Set<String> getTrimWordsSet(List<String> list){
+    private static Set<String> getTrimWordsSet(List<String> list) {
 
-        Set<String> set  = new HashSet<>();
+        Set<String> set = new HashSet<>();
 
         for (String string : list) {
             String[] stringArray = string.split(" ");
